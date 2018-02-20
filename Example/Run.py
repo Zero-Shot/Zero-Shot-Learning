@@ -12,14 +12,15 @@ def run_arg(path_name, number_of_runs):
 
     for idx in range(number_of_runs):
         zsl.set_parameters([0],
-                           [0.001, 0.01, 0.1, 1, 10, 100, 1000],
-                           [0.001, 0.01, 0.1, 1, 10, 100, 1000])
+                           [0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000],
+                           [0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000])
         result = zsl.run()
 
         conf_matrix = result.get_confusion_matrix()
         print(conf_matrix)
         pred_results = result.get_prediction_results()
         print(pred_results)
+        result.save_prediction_matrix_to_file(os.path.join(path_name, "matrix.csv"))
 
         result.save_accuracy_to_file(os.path.join(path_name, "output.txt"))
 

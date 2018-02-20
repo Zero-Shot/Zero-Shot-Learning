@@ -3,6 +3,7 @@ Results of the ZSL experiment
 """
 
 import pandas as pd
+import numpy as np
 
 
 class ExperimentResults:
@@ -74,3 +75,20 @@ class ExperimentResults:
         """
         with open(file_path, "a") as file:
             file.write("Parameters: " + str(self._parameters) + ". Final score: " + str(self._accuracy) + '\n')
+
+    def get_prediction_matrix(self):
+        df = pd.DataFrame(np.zeros((len(self._test_classes), len(self._test_classes))))
+
+        for index, label in enumerate(self._labels):
+            row = label
+            col = self._predictions[index]
+            df[row][col] += 1
+
+        df.columns = np.array(self._class_names)[self._test_classes]
+        df.index = np.array(self._class_names)[self._test_classes]
+
+        return df
+
+    def save_prediction_matrix_to_file(self, file_path):
+        self.get_prediction_matrix().to_csv(file_path)
+

@@ -10,7 +10,7 @@ from .ExperimentData import ExperimentData
 from .TrainData import TrainData
 from .Parameters import Parameters
 from .ExperimentResults import ExperimentResults
-from scipy.spatial.distance import pdist, squareform
+from sklearn.metrics.pairwise import pairwise_distances
 
 
 class ZSL:
@@ -81,14 +81,14 @@ class ZSL:
         Set K to Gaussian K kernel, from X using sigma
         :param sigma: parameter for the Gaussian calculation
         """
-        pairwise_dists = squareform(pdist(self._X, 'euclidean'))
+        pairwise_dists = pairwise_distances(self._X, self._X[self._data.get_train_indices()], metric='euclidean', n_jobs=-1)
         self._K = sp.exp(-pairwise_dists ** 2 / sigma ** 2)
 
     def __create_linear_kernel(self):
         """
         Set K to Linear Kernel, from X
         """
-        self._K = self._X @ self._X.T
+        self._K = self._X @ self._X[self._data.get_train_indices()].T
 
     def __read_X(self):
         """
