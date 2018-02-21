@@ -82,7 +82,7 @@ class ExperimentResults:
         for index, label in enumerate(self._labels):
             row = label
             col = self._predictions[index]
-            df[row][col] += 1
+            df[col][row] += 1
 
         df.columns = np.array(self._class_names)[self._test_classes]
         df.index = np.array(self._class_names)[self._test_classes]
