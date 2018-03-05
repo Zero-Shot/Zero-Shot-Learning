@@ -4,7 +4,7 @@ Example of a run script for the system
 
 import sys
 import os
-from ZSL.ZSL import ZSL
+from zeroshot.ZSL import ZSL
 
 
 def run_arg(path_name, number_of_runs):

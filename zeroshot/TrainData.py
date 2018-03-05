@@ -3,7 +3,7 @@ Data used to train the parameters in the ZSL system
 """
 
 import numpy as np
-from ZSL.CalculationData import CalculationData
+from zeroshot.CalculationData import CalculationData
 
 
 class TrainData:
