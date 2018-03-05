@@ -6,10 +6,10 @@ import scipy as sp
 import numpy as np
 import os
 
-from .ExperimentData import ExperimentData
-from .TrainData import TrainData
-from .Parameters import Parameters
-from .ExperimentResults import ExperimentResults
+from ZSL.ExperimentData import ExperimentData
+from ZSL.TrainData import TrainData
+from ZSL.Parameters import Parameters
+from ZSL.ExperimentResults import ExperimentResults
 from sklearn.metrics.pairwise import pairwise_distances
 
 

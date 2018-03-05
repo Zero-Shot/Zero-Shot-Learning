@@ -11,7 +11,7 @@ def run_arg(path_name, number_of_runs):
     zsl = ZSL(path_name)
 
     for idx in range(number_of_runs):
-        zsl.set_parameters([0],
+        zsl.set_parameters([0, 1, 10, 15, 20, 25],
                            [0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000],
                            [0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000])
         result = zsl.run()

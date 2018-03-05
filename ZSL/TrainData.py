@@ -2,9 +2,8 @@
 Data used to train the parameters in the ZSL system
 """
 
-import math
 import numpy as np
-from .CalculationData import CalculationData
+from ZSL.CalculationData import CalculationData
 
 
 class TrainData:
