@@ -24,6 +24,7 @@ def run_arg(path_name, number_of_runs):
 
         result.save_accuracy_to_file(os.path.join(path_name, "output.txt"))
 
+
 if __name__ == '__main__':
     if len(sys.argv) > 2:
         run_arg(sys.argv[1], int(sys.argv[2]))
