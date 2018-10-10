@@ -30,6 +30,26 @@ The result can then be used to output files or show the performance in the termi
 
 For an example, look at `Run.py`.
 
+### Preprocessing Scripts
+An S matrix can automatically be generated in two formats; Default and Split. The default version gives you an S Matrix with X + 1 attributes per word. The Split version gives 4 * X attributes + 1 per word.
+
+These scripts can be found as `createS-4Split.py` and `createS.py`.
+
+They both take 3 arguments:
+ - An alphabet file (this holds all the attributes per letter letter in the script)
+ - A file containing all the words you want to process. Each line needs to start with a number, followed by a space and then followed by the word (Example below)
+ - The output file
+
+Two alphabet files are already included in the directory. These can be used for latin characters. Other alphabet files for other scripts (like Arabic) could be created in a similar manner.
+
+So, in conclusion, the scripts can be called like this: `python3 createS.py alphabet.csv words.txt Smatrix`.
+
+##### Word file example:
+ ```
+ 1 testing
+ 2 other
+ 3 zero
+ ```
 
 ## Cite
 If you make use of this software or want to refer to it, please cite the following paper: __"Zero-Shot Learning Based Approach For Medieval Word Recognition Using Deep-Learned Features", published in ICFHR2018.__
