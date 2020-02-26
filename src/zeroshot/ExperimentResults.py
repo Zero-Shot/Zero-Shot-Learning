@@ -2,8 +2,8 @@
 Results of the ZSL experiment
 """
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 
 class ExperimentResults:
@@ -91,4 +91,3 @@ class ExperimentResults:
 
     def save_prediction_matrix_to_file(self, file_path):
         self.get_prediction_matrix().to_csv(file_path)
-

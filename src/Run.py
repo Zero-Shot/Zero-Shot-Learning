@@ -2,8 +2,9 @@
 Example of a run script for the system
 """
 
-import sys
 import os
+import sys
+
 from zeroshot.ZSL import ZSL
 
 

@@ -84,4 +84,3 @@ class ExperimentData:
 
     def __setitem__(self, key, value):
         self.__dictionary[key] = value
-

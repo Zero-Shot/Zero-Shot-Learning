@@ -3,6 +3,7 @@ Data used to train the parameters in the ZSL system
 """
 
 import numpy as np
+
 from zeroshot.CalculationData import CalculationData
 
 
@@ -103,14 +104,14 @@ class TrainData:
 
         # Create the new S matrices, indices and labels
 
-        self._S_train, self._training_indices, self._training_labels = self.\
+        self._S_train, self._training_indices, self._training_labels = self. \
             create_from_classes(self._training_classes,
                                 calculation_data.get_indices(),
                                 calculation_data.get_labels(),
                                 calculation_data.get_permutation(),
                                 S)
 
-        self._S_validation, self._validation_indices, self._validation_labels = self.\
+        self._S_validation, self._validation_indices, self._validation_labels = self. \
             create_from_classes(self._validation_classes,
                                 calculation_data.get_indices(),
                                 calculation_data.get_labels(),

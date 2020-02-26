@@ -2,15 +2,16 @@
 Zero-Shot learning system
 """
 
-import scipy as sp
-import numpy as np
 import os
 
-from zeroshot.ExperimentData import ExperimentData
-from zeroshot.TrainData import TrainData
-from zeroshot.Parameters import Parameters
-from zeroshot.ExperimentResults import ExperimentResults
+import numpy as np
+import scipy as sp
 from sklearn.metrics.pairwise import pairwise_distances
+
+from zeroshot.ExperimentData import ExperimentData
+from zeroshot.ExperimentResults import ExperimentResults
+from zeroshot.Parameters import Parameters
+from zeroshot.TrainData import TrainData
 
 
 class ZSL:
@@ -81,7 +82,8 @@ class ZSL:
         Set K to Gaussian K kernel, from X using sigma
         :param sigma: parameter for the Gaussian calculation
         """
-        pairwise_dists = pairwise_distances(self._X, self._X[self._data.get_train_indices()], metric='euclidean', n_jobs=-1)
+        pairwise_dists = pairwise_distances(self._X, self._X[self._data.get_train_indices()], metric='euclidean',
+                                            n_jobs=-1)
         self._K = sp.exp(-pairwise_dists ** 2 / sigma ** 2)
 
     def __create_linear_kernel(self):

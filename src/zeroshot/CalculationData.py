@@ -2,8 +2,9 @@
 Data used to calculate the new train and validation subsets
 """
 
-from numpy.random import permutation
 from math import floor
+
+from numpy.random import permutation
 
 
 class CalculationData:
