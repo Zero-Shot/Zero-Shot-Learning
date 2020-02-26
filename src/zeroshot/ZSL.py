@@ -10,8 +10,7 @@ from zeroshot.ExperimentData import ExperimentData
 from zeroshot.TrainData import TrainData
 from zeroshot.Parameters import Parameters
 from zeroshot.ExperimentResults import ExperimentResults
-from sklearn.metrics.pairwise import pairwise_distances
-
+from scipy.spatial.distance import pdist, squareform
 
 class ZSL:
     _X_TRAIN_FILENAME = "Xtrain"
@@ -81,14 +80,14 @@ class ZSL:
         Set K to Gaussian K kernel, from X using sigma
         :param sigma: parameter for the Gaussian calculation
         """
-        pairwise_dists = pairwise_distances(self._X, self._X[self._data.get_train_indices()], metric='euclidean', n_jobs=-1)
+        pairwise_dists = squareform(pdist(self._X, 'euclidean'))
         self._K = sp.exp(-pairwise_dists ** 2 / sigma ** 2)
 
     def __create_linear_kernel(self):
         """
         Set K to Linear Kernel, from X
         """
-        self._K = self._X @ self._X[self._data.get_train_indices()].T
+        self._K = self._X @ self._X.T
 
     def __read_X(self):
         """
