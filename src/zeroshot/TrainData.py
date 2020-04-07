@@ -4,9 +4,6 @@ Data used to train the parameters in the ZSL system
 
 import numpy as np
 import io
-import sys
-import file
-import os
 from zeroshot.CalculationData import CalculationData
 
 
@@ -50,28 +47,28 @@ class TrainData:
         return self._validation_classes
 
     def log_all_data(self, filename):
-        with open(filename, 'w+') as file:
+        with io.open(filename, 'w+', encoding="utf-8") as file:
             file.write("Training data\r\n")
             file.write("Indices\r\n")
-            for index in get_training_indices():
-                file.write(index + "\r\n")
+            for index in self.get_training_indices():
+                file.write(str(index) + "\r\n")
             file.write("Labels\r\n")
-            for label in get_training_labels():
-                file.write(label + "\r\n")
+            for label in self.get_training_labels():
+                file.write(str(label) + "\r\n")
             file.write("Classes\r\n")
-            for className in get_training_classes():
-                file.write(className + "\r\n")
+            for className in self.get_training_classes():
+                file.write(str(className) + "\r\n")
 
             file.write("Validation data\r\n")
             file.write("Indices\r\n")
-            for index in get_validation_indices():
-                file.write(index + "\r\n")
+            for index in self.get_validation_indices():
+                file.write(str(index) + "\r\n")
             file.write("Labels\r\n")
-            for label in get_validation_labels():
-                file.write(label + "\r\n")
+            for label in self.get_validation_labels():
+                file.write(str(label) + "\r\n")
             file.write("Classes\r\n")
-            for className in get_validation_classes():
-                file.write(className + "\r\n")
+            for className in self.get_validation_classes():
+                file.write(str(className) + "\r\n")
 
     @staticmethod
     def __create_indices(indices, labels, class_label):

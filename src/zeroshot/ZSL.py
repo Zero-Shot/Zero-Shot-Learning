@@ -1,6 +1,7 @@
 """
 Zero-Shot learning system
 """
+from datetime import date
 
 import scipy as sp
 import numpy as np
@@ -16,7 +17,7 @@ class ZSL:
     _X_TRAIN_FILENAME = "Xtrain"
     _X_TEST_FILENAME = "Xtest"
     _S_FILENAME = "Smatrix"
-    _LOG_TRAINDATA_FILENAME = "TrainDataLog"
+    _LOG_TRAINDATA_FILENAME = "TrainDataLog.txt"
     _LOG_OUTPUT = True
 
     def __init__(self, dataset_path, log=True):
@@ -219,7 +220,9 @@ class ZSL:
 
         # Create new training data split, containing train and validation
         train_data = TrainData(self._data, S_train)
-        train_data.log_all_data(os.path.join(self._dataset_path, self._LOG_TRAINDATA_FILENAME))
+
+        filename = date.today().strftime("%d/%m/%Y%H%M") + self._LOG_TRAINDATA_FILENAME
+        train_data.log_all_data(os.path.join(self._dataset_path, filename))
         S_val = train_data.get_S_val()
         record = 0
 
